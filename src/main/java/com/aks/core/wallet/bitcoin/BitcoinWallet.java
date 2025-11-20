@@ -8,8 +8,11 @@ import org.bitcoinj.params.MainNetParams;
 
 public class BitcoinWallet extends CryptoWallet {
 
+    public BitcoinWallet() {
+        generateWallet();
+    }
     @Override
-    public void generateAddress() {
+    public void generateWallet() {
         NetworkParameters params = MainNetParams.get();
         ECKey key = new ECKey();
         setAddress(key.toAddress(ScriptType.P2WPKH, params.network()));

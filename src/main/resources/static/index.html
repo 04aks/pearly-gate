@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+</head>
+<body>
+    <p> test crypto wallet generation and saving</p>
+    <button id="id">Generate Wallet</button>
+    <script>
+        document.getElementById("id").onclick = async function() {
+            const response = await fetch('/generate-wallet', {
+                method: 'POST'
+            });
+        }
+    </script>
+</body>
+</html>

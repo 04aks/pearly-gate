@@ -1,4 +1,4 @@
-package com.aks.gateway.bitcoin;
+package com.aks.wallet.bitcoin;
 
 import com.aks.core.wallet.CryptoWallet;
 import com.aks.core.wallet.CryptoWalletFactory;
@@ -24,8 +24,6 @@ public class BitcoinWalletTest {
     }
     @Test
     void generateBitcoinWallet(){
-        bitcoinCryptoWallet.generateAddress();
-        bitcoinCryptoWallet.printAddress();
         assertNotNull(bitcoinCryptoWallet.getPrivateAddress());
         assertNotNull(bitcoinCryptoWallet.getAddress());
     }

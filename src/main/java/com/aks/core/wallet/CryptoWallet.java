@@ -5,8 +5,8 @@ import org.bitcoinj.base.Address;
 public abstract class CryptoWallet {
     private String privateAddress;
     private Address address;
-    public abstract void generateAddress();
-    public abstract void printAddress();
+    protected abstract void generateWallet();
+    protected abstract void printAddress();
     public String getPrivateAddress() {
         return privateAddress;
     }
