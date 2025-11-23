@@ -8,15 +8,14 @@ import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DataManager {
     private final Path dataPath = Paths.get("data", "data.json");
     private final File dataFile = dataPath.toFile();
-    private final Map<Integer, DataEntry> data = new HashMap<>();
+    private final List<DataEntry> data = new ArrayList<>();
     private final JsonMapper jsonMapper = new JsonMapper();
-
     public DataManager(){
 
         try{
@@ -26,7 +25,7 @@ public class DataManager {
         catch(FileAlreadyExistsException ignore){
             try {
                 // otherwise all previous data will get deleted after calling the save method
-                data.putAll(jsonMapper.readValue(dataFile, new TypeReference<Map<Integer, DataEntry>>() {}));
+                data.addAll(jsonMapper.readValue(dataFile, new TypeReference<List<DataEntry>>() {}));
             } catch (IOException e) {
                 System.err.println("No content to map");
             }
@@ -34,8 +33,6 @@ public class DataManager {
         catch (IOException e){
             throw new RuntimeException("Cannot initialize data file", e);
         }
-
-
     }
 
     public boolean dataFileExists(){
@@ -44,7 +41,8 @@ public class DataManager {
     }
 
     public void addData(DataEntry dataEntry){
-        data.put(data.size() + 1, dataEntry);
+        data.add(dataEntry);
+        save();
     }
     public void save(){
         try{
@@ -52,5 +50,8 @@ public class DataManager {
         }catch(IOException e){
             System.err.println("something went wrong while saving to " + dataFile.getName());
         }
+    }
+    public List<DataEntry> getData() {
+        return data;
     }
 }

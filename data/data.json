@@ -1,10 +1,17 @@
-{
-  "1" : {
-    "wallet_address" : "bc1qgjq9seu9830q59samlrzfeapg7e7v04lue87p8",
-    "timestamp" : 1763652769513
-  },
-  "2" : {
-    "wallet_address" : "bc1qv7a4m25wr6zyvg09v2mclfz9f2q25ep5lhcf6j",
-    "timestamp" : 1763652836735
-  }
-}
+[ {
+  "wallet_address" : "bc1qfuwkrnfezat8n0klswneehvn5wsn7rqmmsq00s",
+  "timestamp" : 1763928955508,
+  "status" : "PENDING"
+}, {
+  "wallet_address" : "bc1qqwa839tvs63e2pny84jxxeuu7q27f7snpknt2t",
+  "timestamp" : 1763928976759,
+  "status" : "PENDING"
+}, {
+  "wallet_address" : "bc1q7sl53udeh3rjgtcua49mdgh2qu8c2xgl4tvs5d",
+  "timestamp" : 1763930094852,
+  "status" : "PENDING"
+}, {
+  "wallet_address" : "bc1qusgsh4qnvjgma49y5wm022catqkzqjetc2ee0m",
+  "timestamp" : 1763930535714,
+  "status" : "PENDING"
+} ]

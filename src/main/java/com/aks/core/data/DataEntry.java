@@ -1,5 +1,6 @@
 package com.aks.core.data;
 
+import com.aks.core.util.Status;
 import com.aks.core.wallet.CryptoWallet;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -11,14 +12,17 @@ public class DataEntry {
     private String walletAddress;
     @JsonProperty("timestamp")
     private long timestamp;
+    @JsonProperty("status")
+    private Status status;
     DataEntry(){}
     public DataEntry(CryptoWallet wallet){
         this.wallet = wallet;
         this.walletAddress = wallet.getAddress().toString();
         timestamp = System.currentTimeMillis();
+        status = Status.PENDING;
     }
     public boolean isExpired(long millis){
-        // consider a payment request is expired after ${millis} milli seconds
+        // consider a payment request to be expired after ${millis} milliseconds
         return (System.currentTimeMillis() - timestamp) > millis;
     }
     public String getWalletAddress() {
@@ -26,6 +30,12 @@ public class DataEntry {
     }
     public long getTimestamp() {
         return timestamp;
+    }
+    public Status getStatus() {
+        return status;
+    }
+    public void setStatus(Status status) {
+        this.status = status;
     }
     public void setWalletAddress(String walletAddress) {
         this.walletAddress = walletAddress;
