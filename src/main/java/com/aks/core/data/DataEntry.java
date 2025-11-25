@@ -10,6 +10,8 @@ public class DataEntry {
     private CryptoWallet wallet;
     @JsonProperty("wallet_address")
     private String walletAddress;
+    @JsonProperty("private_key")
+    private String privateKey;
     @JsonProperty("timestamp")
     private long timestamp;
     @JsonProperty("status")
@@ -17,7 +19,8 @@ public class DataEntry {
     DataEntry(){}
     public DataEntry(CryptoWallet wallet){
         this.wallet = wallet;
-        this.walletAddress = wallet.getAddress().toString();
+        this.walletAddress = wallet.getAddress();
+        this.privateKey = wallet.getPrivateKey();
         timestamp = System.currentTimeMillis();
         status = Status.PENDING;
     }
@@ -42,5 +45,8 @@ public class DataEntry {
     }
     public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
+    }
+    public String getPrivateKey() {
+        return privateKey;
     }
 }

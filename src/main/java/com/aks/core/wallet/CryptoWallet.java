@@ -1,24 +1,6 @@
 package com.aks.core.wallet;
 
-import org.bitcoinj.base.Address;
-
-public abstract class CryptoWallet {
-    private String privateAddress;
-    private Address address;
-    protected abstract void generateWallet();
-    protected abstract void printAddress();
-    public String getPrivateAddress() {
-        return privateAddress;
-    }
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setPrivateAddress(String privateAddress) {
-        this.privateAddress = privateAddress;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
+public interface CryptoWallet {
+    String getAddress();
+    String getPrivateKey();
 }

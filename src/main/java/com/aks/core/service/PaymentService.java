@@ -7,7 +7,12 @@ import com.aks.core.transport.HttpTransport;
 import com.aks.core.util.JsonSerializer;
 import com.aks.core.util.Status;
 import java.util.List;
+/*
+    -This class is all about payments I receive to
+    generated wallet that I have saved in a DB/json file.
 
+    -It has nothing to do with signing or broadcasting any crypto transactions.
+ */
 public class PaymentService {
     private final HttpTransport transport;
     private final DataManager dataManager;

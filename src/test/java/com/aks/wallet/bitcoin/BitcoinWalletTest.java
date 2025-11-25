@@ -24,7 +24,7 @@ public class BitcoinWalletTest {
     }
     @Test
     void generateBitcoinWallet(){
-        assertNotNull(bitcoinCryptoWallet.getPrivateAddress());
+        assertNotNull(bitcoinCryptoWallet.getPrivateKey());
         assertNotNull(bitcoinCryptoWallet.getAddress());
     }
 }

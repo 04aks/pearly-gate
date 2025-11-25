@@ -19,7 +19,6 @@ public class Controller {
         CryptoWallet wallet = pearly.wallet().create("BTC");
         pearly.payments().addPayment(new DataEntry(wallet));
     }
-
     @GetMapping("/test")
     public String test() {
         return "API is working!";
