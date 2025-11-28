@@ -61,6 +61,13 @@
 			<version>2.19.2</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/io.github.novacrypto/Base58 -->
+		<dependency>
+			<groupId>io.github.novacrypto</groupId>
+			<artifactId>Base58</artifactId>
+			<version>2022.01.17</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
