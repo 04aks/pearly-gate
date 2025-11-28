@@ -19,7 +19,7 @@ public class DataEntry {
     DataEntry(){}
     public DataEntry(CryptoWallet wallet){
         this.wallet = wallet;
-        this.walletAddress = wallet.getAddress();
+        this.walletAddress = wallet.getPublicAddress();
         this.privateKey = wallet.getPrivateKey();
         timestamp = System.currentTimeMillis();
         status = Status.PENDING;

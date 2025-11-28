@@ -1,6 +1,6 @@
 package com.aks.core.wallet;
 
 public interface CryptoWallet {
-    String getAddress();
+    String getPublicAddress();
     String getPrivateKey();
 }

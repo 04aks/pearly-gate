@@ -1,7 +1,7 @@
 package com.aks.core.factory;
 
 import com.aks.core.service.TransactionService;
-import com.aks.core.wallet.bitcoin.BitcoinTransactionService;
+import com.aks.core.service.BitcoinTransactionService;
 
 public class TransactionServiceFactory {
     public static TransactionService create(String ticker){

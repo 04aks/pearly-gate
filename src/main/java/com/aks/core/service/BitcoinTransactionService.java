@@ -1,6 +1,6 @@
-package com.aks.core.wallet.bitcoin;
+package com.aks.core.service;
 
-import com.aks.core.service.TransactionService;
+import com.aks.core.wallet.bitcoin.BitcoinConfig;
 import org.bitcoinj.base.Address;
 import org.bitcoinj.base.Coin;
 import org.bitcoinj.core.InsufficientMoneyException;
