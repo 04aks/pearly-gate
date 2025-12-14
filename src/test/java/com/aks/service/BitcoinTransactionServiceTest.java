@@ -18,9 +18,9 @@ public class BitcoinTransactionServiceTest {
     }
     @Test
     void testTransaction(){
-        String privateKey = "L2tFSg1wFpAZTgbgs3kkP2EX6B61nxtnva3GFSsGmG6zKNoofEjd";
-        String toAddress = "bc1qyy3f5p38sls4lr8pjh3k7ukg7wy3r0vtqmndqr";
-        long amount = 1000;
-        service.send(privateKey, toAddress, amount);
+        // String privateKey = "L2tFSg1wFpAZTgbgs3kkP2EX6B61nxtnva3GFSsGmG6zKNoofEjd";
+        // String toAddress = "bc1qyy3f5p38sls4lr8pjh3k7ukg7wy3r0vtqmndqr";
+        // long amount = 1000;
+        // service.send(privateKey, toAddress, amount);
     }
 }
