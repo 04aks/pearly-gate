@@ -2,6 +2,7 @@ package com.aks.core.service;
 
 import com.aks.core.data.DataEntry;
 import com.aks.core.data.DataManager;
+import com.aks.core.factory.TransactionServiceFactory;
 import com.aks.core.model.WalletInfo;
 import com.aks.core.transport.HttpTransport;
 import com.aks.core.util.JsonSerializer;
@@ -35,18 +36,17 @@ public class PaymentService {
     public void checkPendingPayments(){
         // get all PENDING wallets from json file
         addPendingPayments();
+        TransactionService transactionService;
         for(DataEntry d : pending){
-            if(isPaid(d)){
-                System.out.println("received payment on: " + d.getWalletAddress());
+            transactionService = TransactionServiceFactory.create(d.getTicker(), transport, json);
+            if(transactionService.isPaid(d)){
+                System.out.println("received " + d.getTicker().toUpperCase() +
+                        " payment on: " + d.getWalletAddress());
                 d.setStatus(Status.COMPLETE);
+            }else{
+                System.out.println("not sent yet!");
             }
         }
         dataManager.save();
-    }
-    public boolean isPaid(DataEntry d){
-        String walletInfoUrl = "https://blockstream.info/api/address/";
-        String response = transport.get(walletInfoUrl + d.getWalletAddress(), null);
-        WalletInfo walletInfo = json.fromJson(response, WalletInfo.class);
-        return walletInfo.getChain_stats().getFunded_txo_count() >= 1;
     }
 }

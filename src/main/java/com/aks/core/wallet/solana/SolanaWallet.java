@@ -1,5 +1,6 @@
 package com.aks.core.wallet.solana;
 
+import com.aks.core.data.DataEntry;
 import com.aks.core.wallet.CryptoWallet;
 import io.github.novacrypto.base58.Base58;
 
@@ -32,6 +33,12 @@ public class SolanaWallet implements CryptoWallet {
             throw new RuntimeException(e);
         }
     }
+
+    @Override
+    public String getTicker() {
+        return "sol";
+    }
+
     @Override
     public String getPublicAddress() {
         return publicAddress;

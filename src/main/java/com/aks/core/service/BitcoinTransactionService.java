@@ -1,5 +1,9 @@
 package com.aks.core.service;
 
+import com.aks.core.data.DataEntry;
+import com.aks.core.model.WalletInfo;
+import com.aks.core.transport.HttpTransport;
+import com.aks.core.util.JsonSerializer;
 import com.aks.core.wallet.bitcoin.BitcoinConfig;
 import org.bitcoinj.base.Address;
 import org.bitcoinj.base.Coin;
@@ -12,6 +16,13 @@ import org.bitcoinj.wallet.Wallet;
 import java.io.File;
 
 public class BitcoinTransactionService implements TransactionService {
+
+    private final HttpTransport transport;
+    private final JsonSerializer json;
+    public BitcoinTransactionService(HttpTransport transport, JsonSerializer json){
+        this.transport = transport;
+        this.json = json;
+    }
     @Override
     public void send(String privateKey, String toAddress, long amount) {
 
@@ -45,5 +56,12 @@ public class BitcoinTransactionService implements TransactionService {
             throw new RuntimeException(e);
         }
 
+    }
+    @Override
+    public boolean isPaid(DataEntry dataEntry) {
+        String walletInfoUrl = "https://blockstream.info/api/address/";
+        String response = transport.get(walletInfoUrl + dataEntry.getWalletAddress(), null);
+        WalletInfo walletInfo = json.fromJson(response, WalletInfo.class);
+        return walletInfo.getChain_stats().getFunded_txo_count() >= 1;
     }
 }

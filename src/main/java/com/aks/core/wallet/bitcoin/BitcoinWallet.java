@@ -1,5 +1,7 @@
 package com.aks.core.wallet.bitcoin;
 
+import com.aks.core.data.DataEntry;
+import com.aks.core.model.WalletInfo;
 import com.aks.core.wallet.CryptoWallet;
 import org.bitcoinj.base.Address;
 import org.bitcoinj.base.ScriptType;
@@ -23,5 +25,10 @@ public class BitcoinWallet implements CryptoWallet {
     @Override
     public String getPrivateKey() {
         return privateAddress;
+    }
+
+    @Override
+    public String getTicker() {
+        return "btc";
     }
 }

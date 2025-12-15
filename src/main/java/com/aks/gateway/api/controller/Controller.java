@@ -4,6 +4,7 @@ import com.aks.core.facade.Pearly;
 import com.aks.core.factory.CryptoWalletFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.aks.core.data.DataEntry;
 import com.aks.core.wallet.CryptoWallet;
@@ -16,8 +17,10 @@ public class Controller {
     }
 
     @PostMapping("/generate-wallet")
-    public void generateWallet() {
-        CryptoWallet wallet = CryptoWalletFactory.create("BTC");
+    public void generateWallet(
+            @RequestParam(required = true) String ticker
+    ) {
+        CryptoWallet wallet = CryptoWalletFactory.create(ticker);
         pearly.payments().addPayment(new DataEntry(wallet));
     }
     @GetMapping("/test")

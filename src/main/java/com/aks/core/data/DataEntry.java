@@ -8,6 +8,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class DataEntry {
     @JsonIgnore
     private CryptoWallet wallet;
+    @JsonProperty("name")
+    private String ticker;
     @JsonProperty("wallet_address")
     private String walletAddress;
     @JsonProperty("private_key")
@@ -23,6 +25,7 @@ public class DataEntry {
         this.privateKey = wallet.getPrivateKey();
         timestamp = System.currentTimeMillis();
         status = Status.PENDING;
+        ticker = wallet.getTicker();
     }
     public boolean isExpired(long millis){
         // consider a payment request to be expired after ${millis} milliseconds
@@ -48,5 +51,9 @@ public class DataEntry {
     }
     public String getPrivateKey() {
         return privateKey;
+    }
+
+    public String getTicker() {
+        return ticker;
     }
 }
